@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Папки
+
+Secret_Project/scratch/
+
+#Файлы
+index2.html
+indextwo.html
+# Виртуальное окружение
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.proxyai/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Poetry
+poetry.lock
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.bak
+
+# Переменные окружения
+.env
+.env.local

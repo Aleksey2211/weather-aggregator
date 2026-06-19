@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Погодный агрегатор</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Погодный агрегатор</h1>
+            <p class="subtitle">Сравнение прогнозов из разных источников</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Введите город (например: Москва, London, Paris)" autocomplete="off">
+                <button id="searchBtn">🔍 Найти</button>
+            </div>
+            <div class="country-hint">
+                <label>
+                    <input type="checkbox" id="useCountry"> Уточнить код страны
+                </label>
+                <input type="text" id="countryCode" placeholder="RU, GB, US..." disabled>
+            </div>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Загрузка данных о погоде...</p>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <div id="weatherResults" class="weather-results" style="display: none;">
+            <div class="city-info" id="cityInfo"></div>
+            <div class="forecasts-container" id="forecastsContainer">
+                <!-- Карточки прогнозов будут добавляться сюда динамически -->
+            </div>
+        </div>
+
+        <footer>
+            <p>Данные предоставлены: Open-Meteo, 7Timer, NASA POWER</p>
+            <p>🐾 Если нет данных — виноват Slowpoke</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

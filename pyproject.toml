@@ -1,0 +1,23 @@
+[project]
+name = "pythonproject3"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Alexey",email = "akiraduffyduck@mail.ru"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "jinja2",
+    "pydantic",
+    "requests",
+    "geonamescache (>=3.0.1,<4.0.0)",
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
