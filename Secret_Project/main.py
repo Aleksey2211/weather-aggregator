@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from typing import Dict, Any
-from forecast_response import get_weather_by_city
+from .forecast_response import get_weather_by_city
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
