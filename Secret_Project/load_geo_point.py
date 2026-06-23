@@ -1,4 +1,4 @@
-from geo_point import CityModel
+from .geo_point import CityModel
 
 
 def check_geo_point(data: dict, model: CityModel) ->  CityModel|dict:
