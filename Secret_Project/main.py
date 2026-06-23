@@ -5,17 +5,29 @@ from fastapi.responses import HTMLResponse
 from typing import Dict, Any
 from .forecast_response import get_weather_by_city
 import os
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Меняем рабочую директорию на папку с main.py
+#os.chdir(Path(__file__).resolve().parent)
+
+
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = Path(__file__).resolve().parent
 
 geo_app = FastAPI(title="Weather Aggregator API", description="API для получения погоды из нескольких источников")
 
 
 
-templates = Jinja2Templates(directory="templates")
-templates.env.cache = {}
+# templates = Jinja2Templates(directory="templates")
+# geo_app.mount("/static", StaticFiles(directory="static"), name="static")
+# templates.env.cache = {}
 
-geo_app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory=BASE_DIR / "templates")
+templates.env.cache = {}
+geo_app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+
+
 
 # Запрос на основную  страницу
 @geo_app.get("/", response_class=HTMLResponse)
