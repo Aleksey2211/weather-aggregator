@@ -1,7 +1,7 @@
 import weakref
 import requests
 from typing import Dict
-from services_api_root  import OPEN_METEO_API_URL, SEVENTIMER_API_URL, NASA_API_URL
+from .services_api_root  import OPEN_METEO_API_URL, SEVENTIMER_API_URL, NASA_API_URL
 
 
 class ForecastServer:
