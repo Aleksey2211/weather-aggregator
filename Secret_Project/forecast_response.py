@@ -1,8 +1,8 @@
-from city_data import  get_citydata
-from load_geo_point import check_geo_point
-from geo_point import CityModel
-from forecast_service import ForecastServer, get_city_forecast
-from weather_parsers import aggregate_all_forecasts
+from .city_data import  get_citydata
+from .load_geo_point import check_geo_point
+from .geo_point import CityModel
+from .forecast_service import ForecastServer, get_city_forecast
+from .weather_parsers import aggregate_all_forecasts
 
 
 def get_weather_by_city(city_name: str, country_code: str = None) -> dict:
