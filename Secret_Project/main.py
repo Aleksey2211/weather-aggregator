@@ -52,9 +52,9 @@ async def health_check() -> Dict[str, str]:
     return {"status": "ok", "message": "Weather Aggregator API is running"}
 
 
-if __name__ == "__main__":
-    import uvicorn
+# if __name__ == "__main__":
+#     import uvicorn
+#
+#     uvicorn.run("main:geo_app", host="127.0.0.1", port=8002,  reload=True)
 
-    uvicorn.run("main:geo_app", host="127.0.0.1", port=8002,  reload=True)
-
-
+print( BASE_DIR )
