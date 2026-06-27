@@ -6,6 +6,9 @@ from typing import Dict, Any
 from .forecast_response import get_weather_by_city
 import os
 from pathlib import Path
+from .log_func import  log_request
+import asyncio
+
 
 # Меняем рабочую директорию на папку с main.py
 #os.chdir(Path(__file__).resolve().parent)
@@ -39,10 +42,15 @@ async def read_about_main(request: Request):
 @geo_app.get("/api/weather")
 async def get_weather_api(
         city: str = Query(..., description="Название города", min_length=1, max_length=100),
-        country: str = Query(None, description="Код страны (опционально)")
+        country: str = Query(None, description="Код страны (опционально)"),
+        request: Request = None
 ) -> Dict[str, Any]:
+
+
+    log_data = log_request(city, country, request)
     """
     API для получения погоды (используется JavaScript)
+    log_request
     """
     try:
         result = get_weather_by_city(city, country)
@@ -64,9 +72,8 @@ async def health_check() -> Dict[str, str]:
     return {"status": "ok", "message": "Weather Aggregator API is running"}
 
 
-# if __name__ == "__main__":
-#     import uvicorn
-#
-#     uvicorn.run("main:geo_app", host="127.0.0.1", port=8002,  reload=True)
+if __name__ == "__main__":
+    import uvicorn
 
-print( BASE_DIR )
+    uvicorn.run("main:geo_app", host="127.0.0.1", port=8002,  reload=True)
+
