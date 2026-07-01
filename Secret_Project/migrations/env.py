@@ -5,22 +5,37 @@ from sqlalchemy import pool
 
 from alembic import context
 
-
 import sys
 from pathlib import Path
+#
+# # Добавляем папку Secret_Project в sys.path
+# project_dir = Path(__file__).resolve().parent.parent
+# sys.path.append(str(project_dir))
 
-# Получаем путь к папке, где лежит env.py
-current_dir = Path(__file__).resolve().parent  # .../migrations/
 
-# Поднимаемся на уровень выше (в Secret_Project)
-project_dir = current_dir.parent  # .../Secret_Project/
+import sys
+from os.path import dirname, abspath
+# import sys
+# from pathlib import Path
+# from dotenv import load_dotenv
+#
+#
+# # Загружаем .env
+# env_path = Path(__file__).resolve().parent.parent / ".env"
+# load_dotenv(dotenv_path=env_path)
+#
+# # Добавляем путь к проекту
+# project_dir = Path(__file__).resolve().parent.parent
+# sys.path.append(str(project_dir))
 
-# Добавляем папку Secret_Project в пути поиска
+from Secret_Project.database_session import Base
+from Secret_Project.configs import DATABASE_URL
+from Secret_Project.models import RequestLog
+# from database_session import Base
+# from configs import DATABASE_URL
+
+project_dir = Path(__file__).resolve().parent.parent  # Это PythonProject3!
 sys.path.append(str(project_dir))
-
-
-from database_session import Base
-from configs import DATABASE_URL
 
 
 # this is the Alembic Config object, which provides
@@ -30,23 +45,24 @@ config = context.config
 
 config.set_main_option("sqlalchemy.url", f"{DATABASE_URL}?async_fallback=True")
 
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-
-
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-#target_metadata = None
 target_metadata = Base.metadata
+
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+
 
 
 def run_migrations_offline() -> None:
@@ -99,6 +115,3 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
-
-
-

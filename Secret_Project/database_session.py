@@ -3,10 +3,13 @@ from sqlalchemy.orm import DeclarativeBase,Mapped, mapped_column, relationship
 import os
 from sqlalchemy import ARRAY, String, DateTime, ForeignKey
 from typing import AsyncGenerator
-from configs import DATABASE_URL
+from Secret_Project.configs import DATABASE_URL
 from datetime import datetime, timedelta, timezone
 
 
+"""Root class for DB_tables"""
+class Base(DeclarativeBase):
+    pass
 
 
 engine = create_async_engine(
@@ -31,9 +34,7 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_maker() as session:
         yield session
 
-"""Root class for DB_tables"""
-class Base(DeclarativeBase):
-    pass
+
 
 
 

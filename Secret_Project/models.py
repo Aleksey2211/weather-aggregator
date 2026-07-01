@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, Text
 from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declarative_base
-from .database_session import Base
+from Secret_Project.database_session import Base
 
 
 
